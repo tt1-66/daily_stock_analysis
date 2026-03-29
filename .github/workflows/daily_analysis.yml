@@ -20,7 +20,7 @@ on:
       force_run:
         description: '强制运行（跳过交易日检查）'
         required: false
-        default: true
+        default: false
         type: boolean
 
 # 并发控制：同一时间只运行一个分析任务
@@ -252,7 +252,7 @@ jobs:
           # 构建命令行参数
           FORCE_RUN_ARG=""
           if [ "${{ github.event.inputs.force_run }}" = "true" ]; then
-            FORCE_RUN_ARG="--force-run"
+            FORCE_RUN_ARG=""
             echo "⚡ 已启用强制运行模式（跳过交易日检查）"
           fi
 
